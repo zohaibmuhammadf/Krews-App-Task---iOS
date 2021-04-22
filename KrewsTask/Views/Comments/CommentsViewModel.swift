@@ -17,7 +17,7 @@ class CommentsViewModel: NSObject {
         }
     }
     func fetchComments(){
-        Webservice.shared.fetchComments(Constants.commentsUrl) { [weak self] (comments, error) in
+        Webservice.shared.fetchComments(Constants.Urls.commentsUrl) { [weak self] (comments, error) in
             if error != nil {
                 // show alert
             } else {
@@ -40,7 +40,7 @@ extension CommentsViewController: UITableViewDataSource, UITableViewDelegate {
         return viewModel.comments?.data?.count ?? 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tbleView.dequeueReusableCell(withIdentifier: "CommentsTableViewCell", for: indexPath) as! CommentsTableViewCell
+        let cell = tbleView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.commentsTableViewCell, for: indexPath) as! CommentsTableViewCell
         cell.commentsLbl.text = (viewModel.comments?.data?[indexPath.row].name ?? "") + ":- " + (viewModel.comments?.data?[indexPath.row].body ?? "")
         return cell
     }

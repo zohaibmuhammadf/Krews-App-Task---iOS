@@ -17,7 +17,7 @@ class PostsViewModel: NSObject {
     }
     var bindPostsViewModelToController : (() -> ()) = {}
     func fetchPosts(){
-        Webservice.shared.fetchPosts(Constants.postsApiUrl) { [weak self] (posts, error) in
+        Webservice.shared.fetchPosts(Constants.Urls.postsApiUrl) { [weak self] (posts, error) in
             if error != nil {
                 // show alert
             } else {
@@ -28,13 +28,13 @@ class PostsViewModel: NSObject {
     func navigateToProfileScreen(){
         guard let vc = vc else { return}
         guard let userID = posts?.data?[0].userId else {return}
-        let profileVC = vc.storyboard?.instantiateViewController(identifier: "UserProfileViewController") as! UserProfileViewController
+        let profileVC = vc.storyboard?.instantiateViewController(identifier: Constants.VCIdentifiers.userProfileVC) as! UserProfileViewController
         profileVC.userID = userID
         vc.navigationController?.pushViewController(profileVC, animated: true)
     }
     func navigateToCommentsScreen(){
         guard let vc = vc else { return}
-        let profileVC = vc.storyboard?.instantiateViewController(identifier: "CommentsViewController") as! CommentsViewController
+        let profileVC = vc.storyboard?.instantiateViewController(identifier: Constants.VCIdentifiers.commentsVC) as! CommentsViewController
         vc.navigationController?.pushViewController(profileVC, animated: true)
     }
 }
@@ -45,7 +45,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return viewModel.posts?.data?.count ?? 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = postListTB.dequeueReusableCell(withIdentifier: "PostsTableViewCell", for: indexPath) as! PostsTableViewCell
+        let cell = postListTB.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.postsTableViewCell, for: indexPath) as! PostsTableViewCell
         cell.titleLbl.text = viewModel.posts?.data?[indexPath.row].title ?? ""
         cell.bodyLbl.text = viewModel.posts?.data?[indexPath.row].body ?? ""
         cell.profileBtn.tag = indexPath.row

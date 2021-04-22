@@ -56,6 +56,11 @@
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wa1-z8-s6F">
                                                             <rect key="frame" x="1" y="0.0" width="373" height="225"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="8"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwc-Kr-7u5">
                                                             <rect key="frame" x="0.0" y="225" width="374" height="87"/>
@@ -227,7 +232,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q7c-N0-vdS">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="785"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -263,13 +268,37 @@
                                     <outlet property="delegate" destination="SsU-Ab-iwc" id="MBj-EV-jnT"/>
                                 </connections>
                             </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Type Comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uMG-fk-oXx">
+                                <rect key="frame" x="0.0" y="830" width="334" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="Bvc-Mb-yq7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cl-vN-gpy">
+                                <rect key="frame" x="334" y="830" width="80" height="32"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="1vw-uS-5zC"/>
+                                    <constraint firstAttribute="width" constant="80" id="cWn-Pu-9bS"/>
+                                </constraints>
+                                <state key="normal" title="Post">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="uMG-fk-oXx" firstAttribute="leading" secondItem="8w5-dO-LAC" secondAttribute="leading" id="28S-2N-3xb"/>
+                            <constraint firstItem="2cl-vN-gpy" firstAttribute="leading" secondItem="uMG-fk-oXx" secondAttribute="trailing" id="3iX-mH-r2K"/>
                             <constraint firstItem="Q7c-N0-vdS" firstAttribute="leading" secondItem="8w5-dO-LAC" secondAttribute="leading" id="4zn-OV-w1V"/>
                             <constraint firstItem="8w5-dO-LAC" firstAttribute="trailing" secondItem="Q7c-N0-vdS" secondAttribute="trailing" id="5G7-Vi-PZl"/>
-                            <constraint firstItem="8w5-dO-LAC" firstAttribute="bottom" secondItem="Q7c-N0-vdS" secondAttribute="bottom" id="KSd-P9-J8H"/>
+                            <constraint firstItem="2cl-vN-gpy" firstAttribute="bottom" secondItem="8w5-dO-LAC" secondAttribute="bottom" id="EpQ-m9-216"/>
+                            <constraint firstItem="uMG-fk-oXx" firstAttribute="top" secondItem="Q7c-N0-vdS" secondAttribute="bottom" constant="1" id="Whh-ch-1bu"/>
+                            <constraint firstItem="8w5-dO-LAC" firstAttribute="trailing" secondItem="2cl-vN-gpy" secondAttribute="trailing" id="cJf-Sr-M9u"/>
                             <constraint firstItem="Q7c-N0-vdS" firstAttribute="top" secondItem="8w5-dO-LAC" secondAttribute="top" id="dGd-ki-gy6"/>
+                            <constraint firstItem="uMG-fk-oXx" firstAttribute="bottom" secondItem="8w5-dO-LAC" secondAttribute="bottom" id="rjS-F8-S81"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8w5-dO-LAC"/>
                     </view>

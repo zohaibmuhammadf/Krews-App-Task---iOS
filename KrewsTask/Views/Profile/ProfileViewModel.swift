@@ -20,7 +20,7 @@ class ProfileViewModel: NSObject {
     func fetchUserProfile(){
         guard let vc = vc else { return}
         guard let userID = vc.userID else { return}
-        Webservice.shared.fetchUserProfile(Constants.userProfileUrl+"user_id=\(userID)") { [weak self] (userProfile, error) in
+        Webservice.shared.fetchUserProfile(Constants.Urls.userProfileUrl+"user_id=\(userID)") { [weak self] (userProfile, error) in
             if error != nil {
                 // show alert
             } else {
